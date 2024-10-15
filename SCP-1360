@@ -44,4 +44,24 @@ if (Class=="SCP-096" and rand(1,100)<=3) {
 			sound:Play();
 		}
 	}
-}
+} elseif (Class=="SCP-1360") {
+	wait(3);
+	var list = createtable();
+	list[1] = "rbxassetid://9118386278";
+	list[2] = "rbxassetid://1077890694";
+	list[3] = "rbxassetid://9118352429";
+	list[4] = "rbxassetid://5610058792";
+	var sound = Instance.new("Sound");
+	sound.Parent = Plr.Character.HumanoidRootPart;
+	var count = 0;
+	while (Plr.Class=="SCP-1360") {
+		wait(1);
+		SetHealth(Plr,Plr.Health+2);
+		count = count + 1;
+		if (count==40) {
+			count = 0;
+			sound.SoundId = list[rand(1,#list)];
+			sound:Play();
+		}
+	}
+} // I'm aware there are much prettier ways of doing this check but I got lazy
