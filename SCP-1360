@@ -22,7 +22,7 @@ ModifyTeam("SCP-1360","CanPickup",true);
 ModifyTeam("SCP-1360","CanDrop",true);
 
 OnPlayerSpawn
-if (Class=="SCP-096" and true) {
+if (Class=="SCP-096" and rand(1,100)<=3) {
 	wait(3);
 	SetClass(Plr,"SCP-1360");
 	wait(3);
