@@ -52,13 +52,13 @@ if (match(Class,"CI")) {
 	SetGlobal("Anderson Wave Check",true);
 		if (rand(1,100)<=3) {
 			wait(3);
-			for (var i=1;i<=#GetPlayers();i=i+1) {
-				if (HasTag(Plr,"Anderson Check")) {
-					SetClass(Plr,"Anderson Robotics");
+			for i,v in GetPlayers() {
+				if (HasTag(v,"Anderson Check")) {
+					SetClass(v,"Anderson Robotics");
 				}
 			}
-			for (var i=0;i<=#GetPlayers();i=i+1) {
-				RemoveTag(Plr,"Anderson Check");
+			for i,v in GetPlayers() {
+				RemoveTag(v,"Anderson Check");
 			}
 		}
 	SetGlobal("Anderson Wave Check",false);
