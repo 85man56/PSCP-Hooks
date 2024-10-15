@@ -57,10 +57,14 @@ if (match(Class,"CI")) {
 					SetClass(v,"Anderson Robotics");
 				}
 			}
-			for i,v in GetPlayers() {
+			StopNamedAudio("citheme");
+			PlayNamedAudio("artheme");
+			wait(18.5);
+			StopNamedAudio("artheme");
+		}
+		for i,v in GetPlayers() {
 				RemoveTag(v,"Anderson Check");
 			}
-		}
 	SetGlobal("Anderson Wave Check",false);
 	}
-	}
+}
