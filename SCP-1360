@@ -1,0 +1,47 @@
+HooksStarted
+// Initialize team
+CreateTeam("SCP-1360","Bright reddish violet");
+AddTeamAccessory("SCP-1360","Head",16010152494);
+ModifyTeam("SCP-1360","Shirt",8687715581);
+ModifyTeam("SCP-1360","Pants",8687731608);
+ModifyTeam("SCP-1360","IsSCP",true);
+ModifyTeam("SCP-1360","BaseHealth",200);
+ModifyTeam("SCP-1360","Faceless",true);
+ModifyTeam("SCP-1360","Faction","SCP");
+ModifyTeam("SCP-1360","GroupName","SCP");
+ModifyTeam("SCP-1360","Immunity",10);
+ModifyTeam("SCP-1360","HasInventory",true);
+ModifyTeam("SCP-1360","CanSprint",true);
+ModifyTeam("SCP-1360","StaminaGain",0.25);
+ModifyTeam("SCP-1360","CanSeeHealth",true);
+ModifyTeam("SCP-1360","SpawnText","Your agile frame gradually repairs itself. Find a weapon and fight back Anderson with everything you have!");
+ModifyTeam("SCP-1360","SpawnName","SCP-096");
+ModifyTeam("SCP-1360","UserSpawnNameOnly",true);
+ModifyTeam("SCP-1360","CanSeeSCPBars",true);
+ModifyTeam("SCP-1360","CanPickup",true);
+ModifyTeam("SCP-1360","CanDrop",true);
+
+OnPlayerSpawn
+if (Class=="SCP-096" and true) {
+	wait(3);
+	SetClass(Plr,"SCP-1360");
+	wait(3);
+	var list = createtable();
+	list[1] = "rbxassetid://9118386278";
+	list[2] = "rbxassetid://1077890694";
+	list[3] = "rbxassetid://9118352429";
+	list[4] = "rbxassetid://5610058792";
+	var sound = Instance.new("Sound");
+	sound.Parent = Plr.Character.HumanoidRootPart;
+	var count = 0;
+	while (Plr.Class=="SCP-1360") {
+		wait(1);
+		SetHealth(Plr,Plr.Health+2);
+		count = count + 1;
+		if (count==40) {
+			count = 0;
+			sound.SoundId = list[rand(1,#list)];
+			sound:Play();
+		}
+	}
+}
