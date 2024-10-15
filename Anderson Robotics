@@ -1,0 +1,63 @@
+HooksStarted
+// Initialize team
+CreateTeam("Anderson Robotics","Black");
+ModifyTeam("Anderson Robotics","CanSeeHealth",true);
+ModifyTeam("Anderson Robotics","HasNVG",true);
+ModifyTeam("Anderson Robotics","SpawnText","SCP-1360, the traitor, has been reported to be at this location. Eliminate it at all costs if it is present. Leave no witnesses.");
+ModifyTeam("Anderson Robotics","Shirt",6521067805);
+ModifyTeam("Anderson Robotics","Pants",1011615779);
+ModifyTeam("Anderson Robotics","Vision",Color3.new(0.93,0.76,0.71));
+ModifyTeam("Anderson Robotics","CanSprint",false);
+ModifyTeam("Anderson Robotics","CanCrouch",false);
+ModifyTeam("Anderson Robotics","Faceless",true);
+ModifyTeam("Anderson Robotics","BaseHealth",250);
+ModifyTeam("Anderson Robotics","Immunity",30);
+AddTeamAccessory("Anderson Robotics","Head",17875318361);
+ModifyTeamItems("Anderson Robotics",1,"Silenced Banshee 300");
+ModifyTeamItems("Anderson Robotics",2,"Hax Device Lvl3");
+ModifyTeamItems("Anderson Robotics",3,"Spas-15");
+ModifyTeamItems("Anderson Robotics",4,"Stun Grenade");
+ModifyTeamItems("Anderson Robotics",5,"Stun Grenade");
+ModifyTeamItems("Anderson Robotics",6,"Skin Spray");
+ModifyTeam("Anderson Robotics","VestName","Insulated Heavy Vest");
+ModifyTeam("Anderson Robotics","BodyIsBurnable",false);
+ModifyTeam("Anderson Robotics","Uncuffable",true);
+ModifyTeam("Anderson Robotics","IsHuman",true);
+ModifyTeam("Anderson Robotics","SpawnName","MTF");
+ModifyTeam("Anderson Robotics","UseSpawnNameOnly",true);
+var teamlist = GetTeamList();
+for (var i=1;i<=#teamlist;i=i+1) {
+	SetAlliance("Anderson Robotics",teamlist[i],false);
+	}
+
+OnPlayerChatted
+if (Plr.Team=="Anderson Robotics") {
+	var sound = Instance.new("Sound");
+	sound.SoundId = "rbxassetid://9119100446";
+	sound.Parent = Plr.Character.HumanoidRootPart;
+	sound.Volume = 14;
+	sound:Play();
+	wait(2);
+	sound:Destroy();
+	}
+
+OnPlayerSpawn
+if (match(Class,"CI")) {
+	GiveTag(Plr,"Anderson Check");
+	var check = GetGlobal("Anderson Wave Check");
+	if (check==false) {
+	SetGlobal("Anderson Wave Check",true);
+		if (rand(1,100)<=3) {
+			wait(3);
+			for (var i=1;i<=#GetPlayers();i=i+1) {
+				if (HasTag(Plr,"Anderson Check")) {
+					SetClass(Plr,"Anderson Robotics");
+				}
+			}
+			for (var i=0;i<=#GetPlayers();i=i+1) {
+				RemoveTag(Plr,"Anderson Check");
+			}
+		}
+	SetGlobal("Anderson Wave Check",false);
+	}
+	}
